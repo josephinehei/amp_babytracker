@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.fragment.app.FragmentManager;
@@ -13,29 +12,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.babytracker.ui.main.SectionsPagerAdapter;
 import com.example.babytracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     RecyclerView mRecyclerView;
-    TrackerAdapter mAdapter;
+    SleepTrackerAdapter sAdapter;
+    FoodTrackerAdapter fAdapter;
+    DiaperTrackerAdapter dAdapter;
     SQLiteOpenHelper dBH;
-    Button addButton;
     Integer mStackLevel = 0;
     private static MainActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        instance = this;
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -46,12 +41,10 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                //openAddItemDialog();
                 openAlert();
             }
         });
@@ -59,19 +52,48 @@ public class MainActivity extends AppCompatActivity {
 
     private void openAddItemDialog(String choice) {
         FragmentManager fm = getSupportFragmentManager();
-        AddItemFragment addItemFragment = new AddItemFragment(this, mAdapter, choice);
-        addItemFragment.show(fm, "dialog_item");
+        switch(choice){
+            case "Sleep":
+                sAdapter = SleepFragment.newInstance().giveAdapter();
+                AddSleepFragment addSleepFragment = new AddSleepFragment(this, sAdapter);
+                addSleepFragment.show(fm, "dialog_sleep");
+                break;
+            case "Food":
+                fAdapter = FoodFragment.newInstance().giveAdapter();
+                AddFoodFragment addFoodFragment = new AddFoodFragment(this, fAdapter);
+                addFoodFragment.show(fm, "dialog_food");
+                break;
+            case "Diaper":
+                dAdapter = DiaperFragment.newInstance().giveAdapter();
+                AddDiaperFragment addDiaperFragment = new AddDiaperFragment(this, dAdapter);
+                addDiaperFragment.show(fm, "dialog_diaper");
+                break;
+        }
     }
 
-    public void openUpdateItemDialog(Integer _id) {
+    public void openUpdateItemDialog(Integer _id, String choice) {
         FragmentManager fm = getSupportFragmentManager();
-        UpdateItemFragment updateItemFragment = new UpdateItemFragment(this, mAdapter, _id);
-        updateItemFragment.show(fm, "dialog_item");
+        switch(choice){
+            case "Sleep":
+                sAdapter = SleepFragment.newInstance().giveAdapter();
+                UpdateSleepFragment updateSleepFragment = new UpdateSleepFragment(this, sAdapter, _id);
+                updateSleepFragment.show(fm, "dialog_sleep");
+                break;
+            case "Food":
+                fAdapter = FoodFragment.newInstance().giveAdapter();
+                UpdateFoodFragment updateFoodFragment = new UpdateFoodFragment(this, fAdapter, _id);
+                updateFoodFragment.show(fm, "dialog_food");
+                break;
+            case "Diaper":
+                dAdapter = DiaperFragment.newInstance().giveAdapter();
+                UpdateDiaperFragment updateDiaperFragment = new UpdateDiaperFragment(this, dAdapter, _id);
+                updateDiaperFragment.show(fm, "dialog_diaper");
+                break;
+        }
     }
 
     private void openAlert(){
         androidx.appcompat.app.AlertDialog.Builder dialogBox = new androidx.appcompat.app.AlertDialog.Builder(this);
-        //dialogBox.setMessage("What are you logging?");
         dialogBox.setTitle("What are you logging?");
         String[] categories = {"Sleep", "Food", "Diaper"};
         int checkedItem = 1;
@@ -79,19 +101,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch(which) {
-                    case 0: Toast.makeText(MainActivity.this,
-                            "Clicked on sleep",
-                            Toast.LENGTH_LONG).show();
-                            openAddItemDialog("Sleep");
+                    case 0:
+                        openAddItemDialog("Sleep");
                         break;
-                    case 1: Toast.makeText(MainActivity.this,
-                            "Clicked on food",
-                            Toast.LENGTH_LONG).show();
+                    case 1:
                         openAddItemDialog("Food");
                         break;
-                    case 2: Toast.makeText(MainActivity.this,
-                            "Clicked on diaper",
-                            Toast.LENGTH_LONG).show();
+                    case 2:
                         openAddItemDialog("Diaper");
                         break;
                 }

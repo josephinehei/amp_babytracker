@@ -10,19 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class AddItemFragment extends DialogFragment{
-    private TrackerAdapter trackerAdapter;
+public class AddDiaperFragment extends DialogFragment{
+    private DiaperTrackerAdapter diaperTrackerAdapter;
 
     TextView category;
     EditText date;
-    EditText startTime;
-    EditText stopTime;
-    EditText ounces;
+    EditText time;
     EditText diaperType;
     EditText diaperColor;
     EditText notes;
@@ -30,35 +27,24 @@ public class AddItemFragment extends DialogFragment{
     Context context;
     SQLiteOpenHelper dBH;
 
-    String categoryChoice;
-
-    public AddItemFragment(Context context, TrackerAdapter adapter, String categoryChoice){
+    public AddDiaperFragment(Context context, DiaperTrackerAdapter adapter){
         this.context = context;
-        trackerAdapter = adapter;
-        this.categoryChoice = categoryChoice;
+        diaperTrackerAdapter = adapter;
     }
 
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View dialogView;
-        if(categoryChoice == "Sleep"){
-            dialogView = inflater.inflate(R.layout.dialog_tracker_sleep, null);
-        } else if(categoryChoice == "Food"){
-            dialogView = inflater.inflate(R.layout.dialog_tracker_food, null);
-        } else{
-            dialogView = inflater.inflate(R.layout.dialog_tracker_diaper, null); }
+        View dialogView = inflater.inflate(R.layout.dialog_diaper, null);
 
-        category = (TextView) dialogView.findViewById(R.id.editCategory);
-        category.setText(categoryChoice);
-        date = (EditText) dialogView.findViewById(R.id.editDate);
-        startTime = (EditText) dialogView.findViewById(R.id.editStartTime);
-        stopTime = (EditText) dialogView.findViewById(R.id.editStopTime);
-        ounces = (EditText) dialogView.findViewById(R.id.editOunces);
-        diaperType = (EditText) dialogView.findViewById(R.id.editDiaperType);
-        diaperColor = (EditText) dialogView.findViewById(R.id.editDiaperColor);
-        notes = (EditText) dialogView.findViewById(R.id.editNotes);
+        category = (TextView) dialogView.findViewById(R.id.diaperEditCategory);
+        category.setText("Diaper");
+        date = (EditText) dialogView.findViewById(R.id.diaperEditDate);
+        time = (EditText) dialogView.findViewById(R.id.diaperEditTime);
+        diaperType = (EditText) dialogView.findViewById(R.id.diaperEditDiaperType);
+        diaperColor = (EditText) dialogView.findViewById(R.id.diaperEditDiaperColor);
+        notes = (EditText) dialogView.findViewById(R.id.diaperEditNotes);
 
         builder.setView(dialogView)
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -66,31 +52,27 @@ public class AddItemFragment extends DialogFragment{
                     public void onClick(DialogInterface dialog, int id) {
                         dBH = new DatabaseHelper(context);
 
-                        String enteredCategory = categoryChoice;
+                        String enteredCategory = category.getText().toString().trim();
                         String enteredDate = date.getText().toString().trim();
-                        String enteredStartTime = startTime.getText().toString().trim();
-                        String enteredStopTime = stopTime.getText().toString().trim();
-                        Float enteredOunces = Float.parseFloat(ounces.getText().toString());
+                        String enteredTime = time.getText().toString().trim();
                         String enteredDiaperType = diaperType.getText().toString().trim();
                         String enteredDiaperColor = diaperColor.getText().toString().trim();
                         String enteredNotes = notes.getText().toString().trim();
 
-                                        ((DatabaseHelper) dBH).insertData(
+                                        ((DatabaseHelper) dBH).insertDataDiaper(
                                                 enteredCategory,
                                                 enteredDate,
-                                                enteredStartTime,
-                                                enteredStopTime,
-                                                enteredOunces,
+                                                enteredTime,
                                                 enteredDiaperType,
                                                 enteredDiaperColor,
                                                 enteredNotes
                                         );
-                                        trackerAdapter.refreshList();
+                                        diaperTrackerAdapter.refreshList();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        AddItemFragment.this.getDialog().cancel();
+                        AddDiaperFragment.this.getDialog().cancel();
                     }
                 });
         return builder.create();

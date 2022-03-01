@@ -1,30 +1,24 @@
 package com.example.babytracker;
 
-public class BabyTracker {
+public class SleepTracker {
     private Integer _id;
     private String category;
     private String date;
     private String startTime;
     private String stopTime;
-    private Float ounces;
-    private String diaperType;
-    private String diaperColor;
     private String notes;
 
-    public BabyTracker(Integer _id, String category, String date, String startTime, String stopTime, Float ounces, String diaperType, String diaperColor, String notes){
+    public SleepTracker(Integer _id, String category, String date, String startTime, String stopTime, String notes){
         super();
         this._id = _id;
         this.category = category;
         this.date = date;
         this.startTime = startTime;
         this.stopTime = stopTime;
-        this.ounces = ounces;
-        this.diaperType = diaperType;
-        this.diaperColor = diaperColor;
         this.notes = notes;
     }
 
-    public BabyTracker() {
+    public SleepTracker() {
 
     }
 
@@ -66,28 +60,6 @@ public class BabyTracker {
 
     public void setStopTime(String startTime){
         this.stopTime = stopTime;
-    }
-
-    public Float getOunces(){ return ounces; }
-
-    public void setOunces(Float ounces){
-        this.ounces = ounces;
-    }
-
-    public String getDiaperType(){
-        return diaperType;
-    }
-
-    public void setDiaperType(String diaperType){
-        this.diaperType = diaperType;
-    }
-
-    public String getDiaperColor(){
-        return diaperColor;
-    }
-
-    public void setDiaperColor(String diaperColor){
-        this.diaperColor = diaperColor;
     }
 
     public String getNotes(){

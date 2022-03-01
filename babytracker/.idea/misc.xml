@@ -4,7 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22706209453197404" />
+        <entry key="app/src/main/res/layout/dialog_diaper.xml" value="0.19283065512978986" />
+        <entry key="app/src/main/res/layout/dialog_food.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/dialog_sleep.xml" value="0.19283065512978986" />
         <entry key="app/src/main/res/layout/dialog_tracker_sleep.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/diaper_row_items.xml" value="0.16720257234726688" />
+        <entry key="app/src/main/res/layout/food_row_items.xml" value="0.16720257234726688" />
+        <entry key="app/src/main/res/layout/fragment_diaper.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_food.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_sleep.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/sleep_row_items.xml" value="0.2574074074074074" />
       </map>
     </option>
   </component>

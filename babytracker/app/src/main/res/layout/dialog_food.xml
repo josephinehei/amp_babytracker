@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/foodEditCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Category: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/foodEditCategory"
+        android:layout_width="308dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/foodEditCategoryLabel"
+        app:layout_constraintStart_toEndOf="@+id/foodEditCategoryLabel" />
+
+    <TextView
+        android:id="@+id/foodEditDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Date: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodEditCategoryLabel" />
+
+    <EditText
+        android:id="@+id/foodEditDate"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:inputType="date"
+        app:layout_constraintBaseline_toBaselineOf="@+id/foodEditDateLabel"
+        app:layout_constraintStart_toEndOf="@+id/foodEditDateLabel" />
+
+    <TextView
+        android:id="@+id/foodEditTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Time: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodEditDateLabel" />
+
+    <EditText
+        android:id="@+id/foodEditTime"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:inputType="time"
+        app:layout_constraintBaseline_toBaselineOf="@+id/foodEditTimeLabel"
+        app:layout_constraintStart_toEndOf="@+id/foodEditTimeLabel" />
+
+    <TextView
+        android:id="@+id/foodEditOuncesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Ounces: "
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <EditText
+        android:id="@+id/foodEditOunces"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/foodEditOuncesLabel"
+        app:layout_constraintStart_toEndOf="@+id/foodEditOuncesLabel" />
+
+    <TextView
+        android:id="@+id/foodEditNotesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Notes: "
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <EditText
+        android:id="@+id/foodEditNotes"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/foodEditNotesLabel"
+        app:layout_constraintStart_toEndOf="@+id/foodEditNotesLabel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
