@@ -75,17 +75,17 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         switch(choice){
             case "Sleep":
-                sAdapter = SleepFragment.newInstance().giveAdapter();
+                sAdapter = SleepFragment.giveAdapter();
                 UpdateSleepFragment updateSleepFragment = new UpdateSleepFragment(this, sAdapter, _id);
                 updateSleepFragment.show(fm, "dialog_sleep");
                 break;
             case "Food":
-                fAdapter = FoodFragment.newInstance().giveAdapter();
+                fAdapter = FoodFragment.giveAdapter();
                 UpdateFoodFragment updateFoodFragment = new UpdateFoodFragment(this, fAdapter, _id);
                 updateFoodFragment.show(fm, "dialog_food");
                 break;
             case "Diaper":
-                dAdapter = DiaperFragment.newInstance().giveAdapter();
+                dAdapter = DiaperFragment.giveAdapter();
                 UpdateDiaperFragment updateDiaperFragment = new UpdateDiaperFragment(this, dAdapter, _id);
                 updateDiaperFragment.show(fm, "dialog_diaper");
                 break;

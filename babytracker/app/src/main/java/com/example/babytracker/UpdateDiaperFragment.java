@@ -69,7 +69,7 @@ public class UpdateDiaperFragment extends DialogFragment {
                         String enteredDiaperColor = diaperColor.getText().toString().trim();
                         String enteredNotes = notes.getText().toString().trim();
 
-                        ((DatabaseHelper) dBH).updateTackerDiaper(
+                        ((DatabaseHelper) dBH).updateTrackerDiaper(
                                 _id,
                                 enteredCategory,
                                 enteredDate,

@@ -37,10 +37,13 @@
         android:id="@+id/diaperEditDate"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:inputType="date"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/diaperEditDateLabel"
-        app:layout_constraintStart_toEndOf="@+id/diaperEditDateLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/diaperEditDateLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/diaperEditTimeLabel"
@@ -56,44 +59,58 @@
         android:id="@+id/diaperEditTime"
         android:layout_width="221dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:inputType="time"
+        android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/diaperEditTimeLabel"
-        app:layout_constraintStart_toEndOf="@+id/diaperEditTimeLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/diaperEditTimeLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/diaperEditDiaperTypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:text="Diaper Type: "
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="201dp" />
+        app:layout_constraintTop_toBottomOf="@+id/diaperEditTimeLabel" />
 
     <EditText
         android:id="@+id/diaperEditDiaperType"
         android:layout_width="76dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/diaperEditDiaperTypeLabel"
-        app:layout_constraintStart_toEndOf="@+id/diaperEditDiaperTypeLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/diaperEditDiaperTypeLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/diaperEditDiaperColorLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="Color: "
-        app:layout_constraintStart_toEndOf="@+id/diaperEditDiaperType"
-        tools:layout_editor_absoluteY="201dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diaperEditDiaperTypeLabel" />
 
     <EditText
         android:id="@+id/diaperEditDiaperColor"
         android:layout_width="102dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/diaperEditDiaperColorLabel"
-        app:layout_constraintStart_toEndOf="@+id/diaperEditDiaperColorLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/diaperEditDiaperColorLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/diaperEditNotesLabel"
@@ -103,13 +120,17 @@
         android:layout_marginTop="16dp"
         android:text="Notes: "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diaperEditDiaperTypeLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/diaperEditDiaperColorLabel" />
 
     <EditText
         android:id="@+id/diaperEditNotes"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/diaperEditNotesLabel"
-        app:layout_constraintStart_toEndOf="@+id/diaperEditNotesLabel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/diaperEditNotesLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

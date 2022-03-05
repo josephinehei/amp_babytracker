@@ -16,7 +16,7 @@ import java.util.List;
 
 public class DiaperFragment extends Fragment {
     RecyclerView mRecyclerView;
-    DiaperTrackerAdapter mAdapter;
+    static DiaperTrackerAdapter mAdapter;
     SQLiteOpenHelper dBH;
 
     public DiaperFragment() {
@@ -62,7 +62,7 @@ public class DiaperFragment extends Fragment {
         return view;
     }
 
-    public DiaperTrackerAdapter giveAdapter(){
+    public static DiaperTrackerAdapter giveAdapter(){
         return mAdapter;
     }
 }

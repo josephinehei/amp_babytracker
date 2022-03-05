@@ -52,7 +52,7 @@ public class DiaperTracker {
         return time;
     }
 
-    public void setTime(String startTime){
+    public void setTime(String time){
         this.time = time;
     }
 

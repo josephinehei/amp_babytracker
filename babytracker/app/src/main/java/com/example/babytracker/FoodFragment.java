@@ -16,7 +16,7 @@ import java.util.List;
 
 public class FoodFragment extends Fragment {
     RecyclerView mRecyclerView;
-    FoodTrackerAdapter mAdapter;
+    static FoodTrackerAdapter mAdapter;
     SQLiteOpenHelper dBH;
 
     public FoodFragment() {
@@ -63,7 +63,7 @@ public class FoodFragment extends Fragment {
         return view;
     }
 
-    public FoodTrackerAdapter giveAdapter(){
+    public static FoodTrackerAdapter giveAdapter(){
         return mAdapter;
     }
 }

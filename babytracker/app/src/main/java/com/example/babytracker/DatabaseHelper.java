@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final String CREATE_SLEEP_TABLE = "CREATE TABLE " + SLEEP_TABLE
             + "("
-            + "_sleepID INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "CATEGORY TEXT, "
             + "DATE TEXT, "
             + "STARTTIME TEXT, "
@@ -100,11 +100,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         cv.put("diaperType", diaperType);
         cv.put("diaperColor", diaperColor);
         cv.put("notes", notes);
-        db.insert("DIAPER_TABLE", null, cv);
+        long i = db.insert("DIAPER_TABLE", null, cv);
         return true;
     }
 
-    public boolean updateTackerSleep(Integer id, String category, String date, String startTime, String stopTime,String notes) {
+    public boolean updateTrackerSleep(Integer id, String category, String date, String startTime, String stopTime,String notes) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("category", category);
@@ -116,7 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return true;
     }
 
-    public boolean updateTackerFood(Integer id, String category, String date, String time, Float ounces, String notes) {
+    public boolean updateTrackerFood(Integer id, String category, String date, String time, Float ounces, String notes) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("category", category);
@@ -128,7 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return true;
     }
 
-    public boolean updateTackerDiaper(Integer id, String category, String date, String time, String diaperType, String diaperColor, String notes) {
+    public boolean updateTrackerDiaper(Integer id, String category, String date, String time, String diaperType, String diaperColor, String notes) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("category", category);

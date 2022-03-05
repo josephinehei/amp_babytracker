@@ -65,7 +65,7 @@ public class UpdateFoodFragment extends DialogFragment {
                         Float enteredOunces = Float.parseFloat(ounces.getText().toString());
                         String enteredNotes = notes.getText().toString().trim();
 
-                        ((DatabaseHelper) dBH).updateTackerFood(
+                        ((DatabaseHelper) dBH).updateTrackerFood(
                                 _id,
                                 enteredCategory,
                                 enteredDate,

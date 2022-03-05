@@ -23,7 +23,7 @@ import java.util.List;
 
 public class SleepFragment extends Fragment {
     RecyclerView mRecyclerView;
-    SleepTrackerAdapter mAdapter;
+    static SleepTrackerAdapter mAdapter;
     SQLiteOpenHelper dBH;
 
     public SleepFragment() {
@@ -68,7 +68,7 @@ public class SleepFragment extends Fragment {
         return view;
     }
 
-    public SleepTrackerAdapter giveAdapter(){
+    public static SleepTrackerAdapter giveAdapter(){
         return mAdapter;
     }
 }

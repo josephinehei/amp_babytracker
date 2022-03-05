@@ -65,7 +65,7 @@ public class UpdateSleepFragment extends DialogFragment {
                         String enteredStopTime = stopTime.getText().toString().trim();
                         String enteredNotes = notes.getText().toString().trim();
 
-                        ((DatabaseHelper) dBH).updateTackerSleep(
+                        ((DatabaseHelper) dBH).updateTrackerSleep(
                                 _id,
                                 enteredCategory,
                                 enteredDate,

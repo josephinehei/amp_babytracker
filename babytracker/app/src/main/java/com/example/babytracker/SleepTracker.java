@@ -58,7 +58,7 @@ public class SleepTracker {
         return stopTime;
     }
 
-    public void setStopTime(String startTime){
+    public void setStopTime(String stopTime){
         this.stopTime = stopTime;
     }
 

@@ -19,7 +19,7 @@ public class AddFoodFragment extends DialogFragment{
 
     TextView category;
     EditText date;
-    EditText startTime;
+    EditText time;
     EditText ounces;
     EditText notes;
 
@@ -41,7 +41,7 @@ public class AddFoodFragment extends DialogFragment{
         category = (TextView) dialogView.findViewById(R.id.foodEditCategory);
         category.setText("Food");
         date = (EditText) dialogView.findViewById(R.id.foodEditDate);
-        startTime = (EditText) dialogView.findViewById(R.id.foodEditTime);
+        time = (EditText) dialogView.findViewById(R.id.foodEditTime);
         ounces = (EditText) dialogView.findViewById(R.id.foodEditOunces);
         notes = (EditText) dialogView.findViewById(R.id.foodEditNotes);
 
@@ -53,14 +53,14 @@ public class AddFoodFragment extends DialogFragment{
 
                         String enteredCategory = category.getText().toString().trim();
                         String enteredDate = date.getText().toString().trim();
-                        String enteredStartTime = startTime.getText().toString().trim();
+                        String enteredTime = time.getText().toString().trim();
                         Float enteredOunces = Float.parseFloat(ounces.getText().toString());
                         String enteredNotes = notes.getText().toString().trim();
 
                                         ((DatabaseHelper) dBH).insertDataFood(
                                                 enteredCategory,
                                                 enteredDate,
-                                                enteredStartTime,
+                                                enteredTime,
                                                 enteredOunces,
                                                 enteredNotes
                                         );

@@ -9,78 +9,100 @@
         android:id="@+id/sleepEditCategoryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="56dp"
         android:text="Category: "
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/sleepEditCategory"
         android:layout_width="308dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="24dp" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sleepEditCategoryLabel"
+        app:layout_constraintStart_toEndOf="@+id/sleepEditCategoryLabel" />
 
     <TextView
         android:id="@+id/sleepEditDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="Date: "
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="761dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sleepEditCategoryLabel" />
 
     <EditText
         android:id="@+id/sleepEditDate"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="731dp" />
+        android:layout_marginStart="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sleepEditDateLabel"
+        app:layout_constraintStart_toEndOf="@+id/sleepEditDateLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/sleepEditStartTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time: "
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="761dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Start Time: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sleepEditDateLabel" />
 
     <EditText
         android:id="@+id/sleepEditStartTime"
         android:layout_width="221dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:inputType="time"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="731dp" />
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sleepEditStartTimeLabel"
+        app:layout_constraintStart_toEndOf="@+id/sleepEditStartTimeLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/sleepEditStopTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="Stop Time: "
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="761dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sleepEditStartTimeLabel" />
 
     <EditText
         android:id="@+id/sleepEditStopTime"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:inputType="time"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="731dp" />
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sleepEditStopTimeLabel"
+        app:layout_constraintStart_toEndOf="@+id/sleepEditStopTimeLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/sleepEditNotesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="Notes: "
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="761dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sleepEditStopTimeLabel" />
 
     <EditText
         android:id="@+id/sleepEditNotes"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="731dp" />
+        android:layout_marginStart="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sleepEditNotesLabel"
+        app:layout_constraintStart_toEndOf="@+id/sleepEditNotesLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
