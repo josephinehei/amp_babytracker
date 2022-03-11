@@ -16,7 +16,7 @@
                 android:layout_margin="2dp"
                 android:background="@color/purple_500"
                 android:textColor="@color/white"
-                android:text="Nap" />
+                android:text="Sleep" />
 
             <Button
                 android:id="@+id/widgetButton2"
