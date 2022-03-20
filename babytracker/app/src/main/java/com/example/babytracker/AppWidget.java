@@ -5,32 +5,39 @@ import android.appwidget.AppWidgetProvider;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class AppWidget extends AppWidgetProvider {
 
-    private static final String ButtonClick1 = "ButtonClickTag1";
-    private static final String ButtonClick2 = "ButtonClickTag2";
-    private static final String ButtonClick3 = "ButtonClickTag3";
+    private static final String sleepButton = "sleepButtonTag";
+    private static final String foodButton = "foodButtonTag";
+    private static final String diaperButton = "diaperButtonTag";
+    SQLiteOpenHelper dBH;
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
-        final int N = appWidgetIds.length;
-        for(int i = 0; i < N; i++) {
-            updateAppWidget(context, appWidgetManager, appWidgetIds[i]);
+        for(int appWidgetId: appWidgetIds) {
+            updateAppWidget(context, appWidgetManager, appWidgetId);
         }
     }
 
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        //CharSequence widgetText = widgetButtonProviderConfigureActivity.loadTitlePref(context, appWidgetId);
+
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
-        views.setOnClickPendingIntent(R.id.widgetButton1, getPendingIntent(context, ButtonClick1, appWidgetId));
-        views.setOnClickPendingIntent(R.id.widgetButton2, getPendingIntent(context, ButtonClick2, appWidgetId));
-        views.setOnClickPendingIntent(R.id.widgetButton3, getPendingIntent(context, ButtonClick3, appWidgetId));
+
+        views.setOnClickPendingIntent(R.id.widgetButton1, getPendingIntent(context, sleepButton, appWidgetId));
+        views.setOnClickPendingIntent(R.id.widgetButton2, getPendingIntent(context, foodButton, appWidgetId));
+        views.setOnClickPendingIntent(R.id.widgetButton3, getPendingIntent(context, diaperButton, appWidgetId));
+
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
@@ -38,6 +45,7 @@ public class AppWidget extends AppWidgetProvider {
         Intent intent = new Intent(context, AppWidget.class);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         intent.setAction(action);
+
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.S){
             return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_MUTABLE);
         } else {
@@ -47,15 +55,48 @@ public class AppWidget extends AppWidgetProvider {
 
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if(ButtonClick1.equals(intent.getAction())){
-            Toast.makeText(context, "Button1", Toast.LENGTH_SHORT).show();
+
+        DateFormat df = new SimpleDateFormat("MM/dd");
+        String date = df.format(Calendar.getInstance().getTime());
+        DateFormat tdf = new SimpleDateFormat("hh:mm a");
+        String time = tdf.format(Calendar.getInstance().getTime());
+        Calendar timeLater = Calendar.getInstance();
+        timeLater.add(Calendar.MINUTE, 30);
+        String timePlus = tdf.format(timeLater.getTime());
+
+        dBH = new DatabaseHelper(context);
+
+        if(sleepButton.equals(intent.getAction())){
+            Toast.makeText(context, "30 minute sleep recorded", Toast.LENGTH_SHORT).show();
             Log.w("Widget", "Clicked Sleep");
-        } else if(ButtonClick2.equals(intent.getAction())) {
-            Toast.makeText(context, "Button2", Toast.LENGTH_SHORT).show();
+            ((DatabaseHelper) dBH).insertDataSleep(
+                    "Sleep",
+                    date,
+                    time,
+                    timePlus,
+                    "added using widget"
+            );
+        } else if(foodButton.equals(intent.getAction())) {
+            Toast.makeText(context, "2oz feeding recorded", Toast.LENGTH_SHORT).show();
             Log.w("Widget", "Clicked Food");
-        } else if(ButtonClick3.equals(intent.getAction())) {
-            Toast.makeText(context, "Button3", Toast.LENGTH_SHORT).show();
+            ((DatabaseHelper) dBH).insertDataFood(
+                    "Food",
+                    date,
+                    time,
+                    2F,
+                    "added using widget"
+            );
+        } else if(diaperButton.equals(intent.getAction())) {
+            Toast.makeText(context, "poop recorded", Toast.LENGTH_SHORT).show();
             Log.w("Widget", "Clicked Diaper");
+            ((DatabaseHelper) dBH).insertDataDiaper(
+                    "Sleep",
+                    date,
+                    time,
+                    "poop",
+                    "",
+                    "added using widget"
+            );
         }
     }
 }

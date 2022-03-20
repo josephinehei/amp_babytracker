@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public class DiaperFragment extends Fragment {
-    RecyclerView mRecyclerView;
-    static DiaperTrackerAdapter mAdapter;
+    RecyclerView dRecyclerView;
+    static DiaperTrackerAdapter dAdapter;
     SQLiteOpenHelper dBH;
 
     public DiaperFragment() {
@@ -36,6 +36,12 @@ public class DiaperFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    //Refresh recycler view when opening back up the app
+    public void onResume() {
+        super.onResume();
+        dAdapter.refreshList();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,22 +53,18 @@ public class DiaperFragment extends Fragment {
             e.printStackTrace();
         }
         List listOfItems = ((DatabaseHelper) dBH).getAllDiaperRecords();
-        //remove this chunk before final check in
-        if(listOfItems.isEmpty()){
-            ((DatabaseHelper) dBH).insertDataDiaper("Diaper", "1/30", "11:36", "Poop", "Brown", "test");
-            listOfItems = ((DatabaseHelper) dBH).getAllDiaperRecords();}
 
         //setup the RecyclerView
-        mRecyclerView = view.findViewById(R.id.list);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new DiaperTrackerAdapter(listOfItems, R.layout.fragment_diaper, view.getContext());
-        mRecyclerView.setAdapter(mAdapter);
+        dRecyclerView = view.findViewById(R.id.list);
+        dRecyclerView.setHasFixedSize(true);
+        dRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        dRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        dAdapter = new DiaperTrackerAdapter(listOfItems, R.layout.fragment_diaper, view.getContext());
+        dRecyclerView.setAdapter(dAdapter);
         return view;
     }
 
     public static DiaperTrackerAdapter giveAdapter(){
-        return mAdapter;
+        return dAdapter;
     }
 }

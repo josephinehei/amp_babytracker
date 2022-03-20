@@ -14,11 +14,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final String DB_NAME = "babytracker";
     private static final int DB_VERSION = 1;
+
     //Table Names
     private static final String SLEEP_TABLE = "SLEEP_TABLE";
     private static final String FOOD_TABLE = "FOOD_TABLE";
     private static final String DIAPER_TABLE = "DIAPER_TABLE";
 
+    //Creating tables
     private static final String CREATE_SLEEP_TABLE = "CREATE TABLE " + SLEEP_TABLE
             + "("
             + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -140,12 +142,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.update("DIAPER_TABLE", cv, "_id = ? ", new String[] {Integer.toString(id)});
         return true;
     }
-
-//    public Cursor getDataById(int id) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery("select * from baby where _id="+id+"", null);
-//        return cursor;
-//    }
 
     public int deleteSleepDataById(int id) {
         SQLiteDatabase db = this.getWritableDatabase();

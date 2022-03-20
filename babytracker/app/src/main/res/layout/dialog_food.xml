@@ -58,7 +58,6 @@
         android:layout_width="221dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:inputType="time"
         android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/foodEditTimeLabel"
         app:layout_constraintStart_toEndOf="@+id/foodEditTimeLabel"

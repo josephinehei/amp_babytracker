@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 public class FoodFragment extends Fragment {
-    RecyclerView mRecyclerView;
-    static FoodTrackerAdapter mAdapter;
+    RecyclerView fRecyclerView;
+    static FoodTrackerAdapter fAdapter;
     SQLiteOpenHelper dBH;
 
     public FoodFragment() {
@@ -32,9 +32,12 @@ public class FoodFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
+    //Refresh recycler view when opening back up the app
+    public void onResume() {
+        super.onResume();
+        fAdapter.refreshList();
     }
 
     @Override
@@ -48,22 +51,18 @@ public class FoodFragment extends Fragment {
             e.printStackTrace();
         }
         List listOfItems = ((DatabaseHelper) dBH).getAllFoodRecords();
-        //remove this chunk before final check in
-        if(listOfItems.isEmpty()){
-            ((DatabaseHelper) dBH).insertDataFood("Food", "1/30", "11:36", 5F, "test");
-            listOfItems = ((DatabaseHelper) dBH).getAllFoodRecords();}
 
         //setup the RecyclerView
-        mRecyclerView = view.findViewById(R.id.list);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new FoodTrackerAdapter(listOfItems, R.layout.fragment_food, view.getContext());
-        mRecyclerView.setAdapter(mAdapter);
+        fRecyclerView = view.findViewById(R.id.list);
+        fRecyclerView.setHasFixedSize(true);
+        fRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        fRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        fAdapter = new FoodTrackerAdapter(listOfItems, R.layout.fragment_food, view.getContext());
+        fRecyclerView.setAdapter(fAdapter);
         return view;
     }
 
     public static FoodTrackerAdapter giveAdapter(){
-        return mAdapter;
+        return fAdapter;
     }
 }

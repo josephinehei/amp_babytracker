@@ -11,19 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.DialogInterface;
-
-import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
 
 import java.util.List;
 
 public class SleepFragment extends Fragment {
-    RecyclerView mRecyclerView;
-    static SleepTrackerAdapter mAdapter;
+    RecyclerView sRecyclerView;
+    static SleepTrackerAdapter sAdapter;
     SQLiteOpenHelper dBH;
 
     public SleepFragment() {
@@ -42,6 +35,12 @@ public class SleepFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    //Refresh recycler view when opening back up the app
+    public void onResume() {
+        super.onResume();
+        sAdapter.refreshList();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,22 +52,18 @@ public class SleepFragment extends Fragment {
             e.printStackTrace();
         }
         List listOfItems = ((DatabaseHelper) dBH).getAllSleepRecords();
-        //remove this chunk before final check in
-        if(listOfItems.isEmpty()){
-            ((DatabaseHelper) dBH).insertDataSleep("Sleep", "1/30", "11:36", "3:12", "test");
-            listOfItems = ((DatabaseHelper) dBH).getAllSleepRecords();}
 
         //setup the RecyclerView
-        mRecyclerView = view.findViewById(R.id.list);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new SleepTrackerAdapter(listOfItems, R.layout.fragment_sleep, view.getContext());
-        mRecyclerView.setAdapter(mAdapter);
+        sRecyclerView = view.findViewById(R.id.list);
+        sRecyclerView.setHasFixedSize(true);
+        sRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        sRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        sAdapter = new SleepTrackerAdapter(listOfItems, R.layout.fragment_sleep, view.getContext());
+        sRecyclerView.setAdapter(sAdapter);
         return view;
     }
 
     public static SleepTrackerAdapter giveAdapter(){
-        return mAdapter;
+        return sAdapter;
     }
 }

@@ -18,10 +18,9 @@ public class FoodTrackerAdapter extends RecyclerView.Adapter<FoodTrackerAdapter.
 
     private List<FoodTracker> myList;
     private int rowLayout;
-    private Context mContext;
+    private Context fContext;
     private SQLiteOpenHelper dBH;
     private SQLiteDatabase db;
-    private Cursor cursor;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCategory;
@@ -47,7 +46,7 @@ public class FoodTrackerAdapter extends RecyclerView.Adapter<FoodTrackerAdapter.
     public FoodTrackerAdapter(List<FoodTracker> myList, int rowLayout, Context context){
         this.myList = myList;
         this.rowLayout = rowLayout;
-        this.mContext = context;
+        this.fContext = context;
         dBH = new DatabaseHelper(context);
     }
 
@@ -73,7 +72,7 @@ public class FoodTrackerAdapter extends RecyclerView.Adapter<FoodTrackerAdapter.
             public void onClick(View v) {
                 FoodTracker entry = (FoodTracker) v.getTag();
                 myList.remove(entry);
-                //((DatabaseHelper) dBH).deleteDataById(entry.getId());
+                ((DatabaseHelper) dBH).deleteFoodDataById(entry.getId());
                 notifyDataSetChanged();
             }
         });

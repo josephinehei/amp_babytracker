@@ -18,10 +18,9 @@ public class SleepTrackerAdapter extends RecyclerView.Adapter<SleepTrackerAdapte
 
     private List<SleepTracker> myList;
     private int rowLayout;
-    private Context mContext;
+    private Context sContext;
     private SQLiteOpenHelper dBH;
     private SQLiteDatabase db;
-    private Cursor cursor;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCategory;
@@ -47,7 +46,7 @@ public class SleepTrackerAdapter extends RecyclerView.Adapter<SleepTrackerAdapte
     public SleepTrackerAdapter(List<SleepTracker> myList, int rowLayout, Context context){
         this.myList = myList;
         this.rowLayout = rowLayout;
-        this.mContext = context;
+        this.sContext = context;
         dBH = new DatabaseHelper(context);
     }
 

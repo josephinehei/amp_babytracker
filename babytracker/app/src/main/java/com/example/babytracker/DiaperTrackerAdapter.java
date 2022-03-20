@@ -18,10 +18,9 @@ public class DiaperTrackerAdapter extends RecyclerView.Adapter<DiaperTrackerAdap
 
     private List<DiaperTracker> myList;
     private int rowLayout;
-    private Context mContext;
+    private Context dContext;
     private SQLiteOpenHelper dBH;
     private SQLiteDatabase db;
-    private Cursor cursor;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCategory;
@@ -49,7 +48,7 @@ public class DiaperTrackerAdapter extends RecyclerView.Adapter<DiaperTrackerAdap
     public DiaperTrackerAdapter(List<DiaperTracker> myList, int rowLayout, Context context){
         this.myList = myList;
         this.rowLayout = rowLayout;
-        this.mContext = context;
+        this.dContext = context;
         dBH = new DatabaseHelper(context);
     }
 
