@@ -3,38 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="2dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="2dp">
 
-            <Button
-                android:id="@+id/widgetButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="@color/purple_500"
-                android:textColor="@color/white"
-                android:text="Sleep" />
+        <Button
+            android:id="@+id/widgetButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
+            android:text="Sleep"
+            android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/widgetButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="@color/purple_500"
-                android:textColor="@color/white"
-                android:text="Feed" />
+        <Button
+            android:id="@+id/widgetButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
+            android:text="Feed"
+            android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/widgetButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="@color/purple_500"
-                android:textColor="@color/white"
-                android:text="Diaper" />
+        <Button
+            android:id="@+id/widgetButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
+            android:text="Pee"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/widgetButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@color/purple_500"
+            android:text="Poop"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

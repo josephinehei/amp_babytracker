@@ -19,7 +19,8 @@ public class AppWidget extends AppWidgetProvider {
 
     private static final String sleepButton = "sleepButtonTag";
     private static final String foodButton = "foodButtonTag";
-    private static final String diaperButton = "diaperButtonTag";
+    private static final String peeButton = "peeButtonTag";
+    private static final String poopButton = "poopButtonTag";
     SQLiteOpenHelper dBH;
 
     @Override
@@ -36,7 +37,8 @@ public class AppWidget extends AppWidgetProvider {
 
         views.setOnClickPendingIntent(R.id.widgetButton1, getPendingIntent(context, sleepButton, appWidgetId));
         views.setOnClickPendingIntent(R.id.widgetButton2, getPendingIntent(context, foodButton, appWidgetId));
-        views.setOnClickPendingIntent(R.id.widgetButton3, getPendingIntent(context, diaperButton, appWidgetId));
+        views.setOnClickPendingIntent(R.id.widgetButton3, getPendingIntent(context, peeButton, appWidgetId));
+        views.setOnClickPendingIntent(R.id.widgetButton4, getPendingIntent(context, poopButton, appWidgetId));
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
@@ -86,11 +88,22 @@ public class AppWidget extends AppWidgetProvider {
                     2F,
                     "added using widget"
             );
-        } else if(diaperButton.equals(intent.getAction())) {
-            Toast.makeText(context, "poop recorded", Toast.LENGTH_SHORT).show();
-            Log.w("Widget", "Clicked Diaper");
+        } else if(peeButton.equals(intent.getAction())) {
+            Toast.makeText(context, "pee recorded", Toast.LENGTH_SHORT).show();
+            Log.w("Widget", "Clicked Pee");
             ((DatabaseHelper) dBH).insertDataDiaper(
-                    "Sleep",
+                    "Diaper",
+                    date,
+                    time,
+                    "pee",
+                    "",
+                    "added using widget"
+            );
+        } else if(poopButton.equals(intent.getAction())) {
+            Toast.makeText(context, "poop recorded", Toast.LENGTH_SHORT).show();
+            Log.w("Widget", "Clicked Poo");
+            ((DatabaseHelper) dBH).insertDataDiaper(
+                    "Diaper",
                     date,
                     time,
                     "poop",

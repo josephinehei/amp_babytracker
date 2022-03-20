@@ -14,6 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class AddFoodFragment extends DialogFragment{
     private FoodTrackerAdapter foodTrackerAdapter;
 
@@ -37,11 +41,18 @@ public class AddFoodFragment extends DialogFragment{
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_food, null);
 
+        DateFormat df = new SimpleDateFormat("MM/dd");
+        String today = df.format(Calendar.getInstance().getTime());
+        DateFormat tdf = new SimpleDateFormat("hh:mm a");
+        String timeNow = tdf.format(Calendar.getInstance().getTime());
+
 
         category = (TextView) dialogView.findViewById(R.id.foodEditCategory);
         category.setText("Food");
         date = (EditText) dialogView.findViewById(R.id.foodEditDate);
+        date.setText(today);
         time = (EditText) dialogView.findViewById(R.id.foodEditTime);
+        time.setText(timeNow);
         ounces = (EditText) dialogView.findViewById(R.id.foodEditOunces);
         notes = (EditText) dialogView.findViewById(R.id.foodEditNotes);
 

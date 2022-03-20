@@ -14,6 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class AddDiaperFragment extends DialogFragment{
     private DiaperTrackerAdapter diaperTrackerAdapter;
 
@@ -38,10 +42,17 @@ public class AddDiaperFragment extends DialogFragment{
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_diaper, null);
 
+        DateFormat df = new SimpleDateFormat("MM/dd");
+        String today = df.format(Calendar.getInstance().getTime());
+        DateFormat tdf = new SimpleDateFormat("hh:mm a");
+        String timeNow = tdf.format(Calendar.getInstance().getTime());
+
         category = (TextView) dialogView.findViewById(R.id.diaperEditCategory);
         category.setText("Diaper");
         date = (EditText) dialogView.findViewById(R.id.diaperEditDate);
+        date.setText(today);
         time = (EditText) dialogView.findViewById(R.id.diaperEditTime);
+        time.setText(timeNow);
         diaperType = (EditText) dialogView.findViewById(R.id.diaperEditDiaperType);
         diaperColor = (EditText) dialogView.findViewById(R.id.diaperEditDiaperColor);
         notes = (EditText) dialogView.findViewById(R.id.diaperEditNotes);

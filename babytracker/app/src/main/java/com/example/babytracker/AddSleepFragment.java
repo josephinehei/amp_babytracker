@@ -14,6 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class AddSleepFragment extends DialogFragment{
     private SleepTrackerAdapter sleepTrackerAdapter;
 
@@ -36,11 +40,22 @@ public class AddSleepFragment extends DialogFragment{
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_sleep, null);
 
+        DateFormat df = new SimpleDateFormat("MM/dd");
+        String today = df.format(Calendar.getInstance().getTime());
+        DateFormat tdf = new SimpleDateFormat("hh:mm a");
+        String time = tdf.format(Calendar.getInstance().getTime());
+        Calendar timeLater = Calendar.getInstance();
+        timeLater.add(Calendar.MINUTE, 30);
+        String timePlus = tdf.format(timeLater.getTime());
+
         category = (TextView) dialogView.findViewById(R.id.sleepEditCategory);
         category.setText("Sleep");
         date = (EditText) dialogView.findViewById(R.id.sleepEditDate);
+        date.setText(today);
         startTime = (EditText) dialogView.findViewById(R.id.sleepEditStartTime);
+        startTime.setText(time);
         stopTime = (EditText) dialogView.findViewById(R.id.sleepEditStopTime);
+        stopTime.setText(timePlus);
         notes = (EditText) dialogView.findViewById(R.id.sleepEditNotes);
 
         builder.setView(dialogView)
