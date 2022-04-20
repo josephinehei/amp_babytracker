@@ -34,6 +34,9 @@ public class UpdateFoodFragment extends DialogFragment {
         this._id = _id;
     }
 
+    //Opens a dialog box that gets the item from the database and fills in the information for
+    // that item and allows user to edit the item and save it. Or they can cancel it if they don't
+    // wish to save their changes.
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

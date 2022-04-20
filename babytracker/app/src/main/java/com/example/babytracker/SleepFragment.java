@@ -41,6 +41,7 @@ public class SleepFragment extends Fragment {
         sAdapter.refreshList();
     }
 
+    //Uses a recycler view to display the Sleep tables from the database
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

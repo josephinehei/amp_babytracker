@@ -28,6 +28,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mContext = context;
     }
 
+    //Calls on the fragment of each category based on which one was selected.
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;

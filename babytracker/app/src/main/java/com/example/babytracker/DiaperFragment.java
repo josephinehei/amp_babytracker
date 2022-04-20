@@ -41,7 +41,7 @@ public class DiaperFragment extends Fragment {
         super.onResume();
         dAdapter.refreshList();
     }
-
+    //Uses a recycler view to display the Diaper tables from the database
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

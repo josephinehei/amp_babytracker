@@ -40,6 +40,7 @@ public class FoodFragment extends Fragment {
         fAdapter.refreshList();
     }
 
+    //Uses a recycler view to display the Food tables from the database
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -36,6 +36,9 @@ public class AddDiaperFragment extends DialogFragment{
         diaperTrackerAdapter = adapter;
     }
 
+    //Opens a dialog box for adding a Diaper item with category, date and time automatically
+    // filled in. Adds it to the database when "Save" is clicked. Or does nothing when "Cancel"
+    // is clicked.
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

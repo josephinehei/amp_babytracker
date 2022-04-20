@@ -34,6 +34,9 @@ public class AddSleepFragment extends DialogFragment{
         sleepTrackerAdapter = adapter;
     }
 
+    //Opens a dialog box for adding a Sleep item with category, date and start time automatically
+    // filled in. Adds it to the database when "Save" is clicked. Or does nothing when "Cancel"
+    // is clicked.
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

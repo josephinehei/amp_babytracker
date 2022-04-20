@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static MainActivity instance;
 
+    //Creates app with three categories, each in its own tab
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Opens dialog box for the dialog box based on the category, it will use the update
+    // fragment to fill in the information of the item called from the database.
     public void openUpdateItemDialog(Integer _id, String choice) {
         FragmentManager fm = getSupportFragmentManager();
         switch(choice){
@@ -69,12 +72,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Dialog box that pops up when you click the plus to add an item, choose between
+    // Sleep, Food and Diaper. The dialog box will close and open another dialog box.
     private void openChoiceAlert(){
         FragmentManager fm = getSupportFragmentManager();
         androidx.appcompat.app.AlertDialog.Builder dialogBox = new androidx.appcompat.app.AlertDialog.Builder(this);
         dialogBox.setTitle("What are you logging?");
         String[] categories = {"Sleep", "Food", "Diaper"};
-        int checkedItem = 1;
+        int checkedItem = 0;
         dialogBox.setSingleChoiceItems(categories, checkedItem, new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -83,17 +88,19 @@ public class MainActivity extends AppCompatActivity {
                         sAdapter = SleepFragment.newInstance().giveAdapter();
                         AddSleepFragment addSleepFragment = new AddSleepFragment(MainActivity.this, sAdapter);
                         addSleepFragment.show(fm, "dialog_sleep");
+                        dialog.dismiss();
                         break;
                     case 1:
                         fAdapter = FoodFragment.newInstance().giveAdapter();
                         AddFoodFragment addFoodFragment = new AddFoodFragment(MainActivity.this, fAdapter);
                         addFoodFragment.show(fm, "dialog_food");
+                        dialog.dismiss();
                         break;
                     case 2:
-
                         dAdapter = DiaperFragment.newInstance().giveAdapter();
                         AddDiaperFragment addDiaperFragment = new AddDiaperFragment(MainActivity.this, dAdapter);
                         addDiaperFragment.show(fm, "dialog_diaper");
+                        dialog.dismiss();
                         break;
                 }
             }

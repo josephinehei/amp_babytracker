@@ -55,6 +55,9 @@ public class AppWidget extends AppWidgetProvider {
         }
     }
 
+    //Adds item to the database based on the button clicked. Sleep automatically creates a nap of
+    // 30 minutes. Food automatically adds 2 oz of food. Poo and Pee adds a diaper item based on
+    // the button. All buttons add the current date and time.
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
 
